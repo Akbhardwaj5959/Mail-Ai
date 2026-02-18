@@ -1,0 +1,35 @@
+{
+  "name": "processity-mail-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.29",
+    "@ai-sdk/openai": "^0.0.40",
+    "@ai-sdk/react": "^0.0.40",
+    "@google/generative-ai": "^0.24.1",
+    "ai": "^3.3.0",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.3.1",
+    "googleapis": "^171.4.0",
+    "lucide-react": "^0.564.0",
+    "next": "16.1.6",
+    "next-auth": "^4.24.13",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.4.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4"
+  }
+}

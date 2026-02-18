@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: black;
+  min-height: 100vh;
+  /* Removed the hardcoded background image to let the component handle it */
+}
