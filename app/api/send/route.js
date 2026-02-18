@@ -12,12 +12,12 @@ export async function POST(req) {
 
     const { to, subject, body } = await req.json();
 
-    // Google API Setup
+   
     const auth = new google.auth.OAuth2();
     auth.setCredentials({ access_token: session.accessToken });
     const gmail = google.gmail({ version: 'v1', auth });
 
-    // Email Encode Logic
+    
     const utf8Subject = `=?utf-8?B?${Buffer.from(subject).toString('base64')}?=`;
     const messageParts = [
       `To: ${to}`,
@@ -30,7 +30,7 @@ export async function POST(req) {
     const message = messageParts.join('\n');
     const encodedMessage = Buffer.from(message).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
-    // Asli Sending
+   
     await gmail.users.messages.send({
       userId: 'me',
       requestBody: { raw: encodedMessage },

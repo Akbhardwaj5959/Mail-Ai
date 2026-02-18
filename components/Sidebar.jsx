@@ -12,12 +12,12 @@ const Sidebar = ({
 }) => {
   const user = session?.user;
 
-  // Helper to check active state
+
   const isActive = (id) => activeTab === id;
 
   return (
     <>
-      {/* Mobile Overlay */}
+      
       {isMobileOpen && (
         <div 
           className="fixed inset-0 bg-black/80 z-40 md:hidden backdrop-blur-sm"
@@ -25,7 +25,7 @@ const Sidebar = ({
         />
       )}
 
-      {/* Main Sidebar */}
+      
       <aside className={`
         fixed md:relative z-50 h-full
         w-64 flex-shrink-0 flex flex-col 
@@ -34,7 +34,7 @@ const Sidebar = ({
         ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
         
-        {/* Header / Logo */}
+        
         <div className="h-20 flex items-center justify-between px-6 border-b border-white/5">
           <div className="flex items-center gap-3 font-bold text-xl tracking-wide text-white">
             <div className="w-8 h-8 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
@@ -47,7 +47,7 @@ const Sidebar = ({
           </button>
         </div>
 
-        {/* Compose Button */}
+       
         <div className="p-6">
           <button 
             onClick={onComposeClick}
@@ -58,7 +58,7 @@ const Sidebar = ({
           </button>
         </div>
 
-        {/* Navigation Menu */}
+        
         <nav className="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar">
           <SidebarItem 
             icon={<Mail />} label="Inbox" 
@@ -82,7 +82,7 @@ const Sidebar = ({
           />
         </nav>
 
-        {/* User Profile */}
+      
         <div className="p-4 border-t border-white/10 mt-auto bg-black/20">
           {user ? (
             <div className="flex items-center gap-3">
@@ -120,7 +120,7 @@ const Sidebar = ({
   );
 };
 
-// Item Component
+
 const SidebarItem = ({ icon, label, active, onClick }) => (
   <button 
     onClick={onClick}

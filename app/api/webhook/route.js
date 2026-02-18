@@ -4,7 +4,6 @@ import { z } from 'zod';
 
 export const maxDuration = 30;
 
-// Groq ko OpenAI driver ke zariye connect karna (Sabse Stable tareeka)
 const groq = createOpenAI({
   baseURL: 'https://api.groq.com/openai/v1',
   apiKey: process.env.GROQ_API_KEY, 
@@ -55,7 +54,7 @@ export async function POST(req) {
       },
     });
 
-    // ✨ Stable Fix: Version 3.3.0 ke liye toAIStreamResponse use karein
+    
     return result.toAIStreamResponse();
 
   } catch (error) {

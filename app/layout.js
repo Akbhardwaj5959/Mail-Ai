@@ -1,7 +1,7 @@
-// src/app/layout.js
+
 import { Inter } from "next/font/google";
-import "./globals.css"; // CSS import mat bhoolna!
-import Providers from "@/components/Providers"; // Abhi jo file banayi uska path
+import "./globals.css"; 
+import Providers from "@/components/Providers"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Yahan humne Providers ko wrap kiya hai */}
+        
         <Providers>
           {children}
         </Providers>

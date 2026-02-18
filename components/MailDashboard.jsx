@@ -9,7 +9,7 @@ import Sidebar from './Sidebar';
 const MailAIDashboard = () => {
   const { data: session } = useSession();
 
-  // --- STATES ---
+  
   const [emails, setEmails] = useState([]);
   const [filteredEmails, setFilteredEmails] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ const MailAIDashboard = () => {
   const [composeData, setComposeData] = useState({ to: '', subject: '', body: '' });
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // --- MANUAL SEND FUNCTION ---
+  
   const executeSendEmail = async (dataToUse) => {
     const payload = dataToUse || composeData;
     if (!payload.to || !payload.subject) { alert("⚠️ Missing To or Subject!"); return; }
@@ -51,7 +51,7 @@ const MailAIDashboard = () => {
     setIsSending(false);
   };
 
-  // --- 🧠 AI BRAIN (STREAMING & PROCESSING MERGED) ---
+  
   const { messages, input, handleInputChange, handleSubmit, isLoading, setInput } = useChat({
     api: '/api/chat',
     maxSteps: 5,
@@ -101,7 +101,7 @@ const MailAIDashboard = () => {
     }
   });
 
-  // --- MAGIC AUTO-WRITE BUTTON ---
+  
   const handleAutoWrite = async (e) => {
     e.preventDefault();
     if (!selectedEmail) return;
@@ -121,7 +121,7 @@ const MailAIDashboard = () => {
     }, 500);
   };
 
-  // --- 📡 REAL-TIME SYNC LOGIC ---
+  
   const fetchEmails = async () => {
     if (!session) return;
     setLoading(true);
@@ -196,7 +196,6 @@ const MailAIDashboard = () => {
         </div>
       </main>
 
-      {/* --- COMPOSE MODAL --- */}
       {isComposeOpen && (
         <div style={{ zIndex: 10000 }} className="fixed inset-0 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-xl" onClick={() => setIsComposeOpen(false)}></div>
@@ -225,7 +224,6 @@ const MailAIDashboard = () => {
         </div>
       )}
 
-      {/* --- AI CHAT WITH STREAMING UI --- */}
       {!isChatOpen && (
         <button onClick={() => setIsChatOpen(true)} style={{ zIndex: 99999 }} className="fixed bottom-8 right-8 flex items-center gap-3 pl-5 pr-2 py-2 bg-[#0f1115] border border-blue-500/30 rounded-full shadow-2xl hover:scale-105 transition-all">
           <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mr-2">Ask Jarvis</span>
@@ -251,7 +249,7 @@ const MailAIDashboard = () => {
                 </div>
               ))}
               
-              {/* 🔄 PROCESSING INDICATOR */}
+     
               {isLoading && (
                 <div className="flex justify-start items-center gap-2 ml-2">
                   <div className="flex gap-1">

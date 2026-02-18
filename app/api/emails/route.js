@@ -10,7 +10,7 @@ export async function GET(req) {
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
   }
 
-  // 1. Pata karo user ko kya dekhna hai (INBOX, SENT, DRAFT, TRASH)
+  
   const { searchParams } = new URL(req.url);
   const label = searchParams.get('label') || 'INBOX';
 
@@ -19,16 +19,15 @@ export async function GET(req) {
     auth.setCredentials({ access_token: session.accessToken });
     const gmail = google.gmail({ version: 'v1', auth });
 
-    // 2. Specific Label ke emails mangwao
     const response = await gmail.users.messages.list({
       userId: 'me',
-      labelIds: [label], // <--- Ye line magic karegi (Inbox vs Sent)
+      labelIds: [label], 
       maxResults: 15,
     });
 
     const messages = response.data.messages || [];
 
-    // 3. Email ki details fetch karo
+ 
     const emailPromises = messages.map(async (msg) => {
       try {
         const msgDetail = await gmail.users.messages.get({
@@ -49,11 +48,11 @@ export async function GET(req) {
           date,
         };
       } catch (e) {
-        return null; // Agar koi email fail ho jaye to crash na ho
+        return null; 
       }
     });
 
-    const emails = (await Promise.all(emailPromises)).filter(Boolean); // Remove nulls
+    const emails = (await Promise.all(emailPromises)).filter(Boolean); 
 
     return NextResponse.json({ emails });
 
